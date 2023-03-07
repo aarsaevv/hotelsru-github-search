@@ -4,7 +4,6 @@ function handleKeypress(searchInput) {
     searchInput.addEventListener('keydown', e => {
         let searchText = e.target.value
         if (e.key === 'Enter') {
-           clearResultList()
            validateAndSubmit(e, searchText)
         }
     })
@@ -13,7 +12,6 @@ function handleKeypress(searchInput) {
 function handleClick(searchButton) {
     searchButton.addEventListener('click', e => {
         let searchText = document.querySelector('.search__input').value
-        clearResultList()
         validateAndSubmit(e, searchText)
     })
 }
@@ -28,6 +26,7 @@ function validateAndSubmit(e, searchText) {
         showValidationWarning('Введенных символов недостаточно. Введите более 3 символов.')
     }
     else {
+        clearResultList()
         fetchRepos(searchText)
     }
 }
