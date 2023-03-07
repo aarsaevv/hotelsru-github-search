@@ -21,13 +21,15 @@ function handleClick(searchButton) {
 function validateAndSubmit(e, searchText) {
     e.preventDefault()
     searchText = searchText.trim()
-        if(!searchText) {
-            throw('Введите запрос в поле поиска')
-        }
-        if (searchText.length <= 2) {
-            throw('Введенных символов недостаточно')
-        }
+    if(!searchText) {
+        showValidationWarning('Введите запрос в поле поиска.')
+    }
+    else if (searchText.length <= 3) {
+        showValidationWarning('Введенных символов недостаточно. Введите более 3 символов.')
+    }
+    else {
         fetchRepos(searchText)
+    }
 }
 
 async function fetchRepos(text) {
@@ -106,10 +108,23 @@ function hideLoadingMessage() {
     loadingMessage.innerHTML = ''
 }
 
+function showValidationWarning(string) {
+    let notificationList = document.querySelector('.notifications')
+    if(notificationList.children.length <= 5) {
+        let notificationItem = document.createElement('div')
+    notificationItem.classList.add('notifications__item')
+    notificationItem.textContent = string
+    notificationList.append(notificationItem)
+    setTimeout(() => {hideValidationWarning(notificationItem)}, 3000)
+    }
+}
+
+function hideValidationWarning(notificationItem) {
+    notificationItem.remove()
+}
+
 let searchInput = document.querySelector('.search__input')
 let searchButton = document.querySelector('.search__button')
 
 handleKeypress(searchInput)
 handleClick(searchButton)
-
-// Кэширование?

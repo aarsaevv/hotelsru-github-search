@@ -1,7 +1,11 @@
+$white: whitesmoke;
+$black: #151716;
+$fuxia: #c41ba5;
+
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #151716;
-    color: whitesmoke;
+    background-color: $black;
+    color: $white;
     font-size: 16px;
     line-height: 1.1;
     padding-left: calc(100vw - 100%);
@@ -22,7 +26,7 @@ body {
 }
 
 .motto>a {
-    color: #c41ba5;
+    color: $fuxia;
     cursor: help;
 }
 
@@ -61,7 +65,7 @@ body {
     }
 
     &__item {
-        border: 1px solid whitesmoke;
+        border: 1px solid $white;
         border-radius: 6px;
         padding: 20px 16px;
         display: flex;
@@ -76,6 +80,47 @@ body {
 
 .item {
     &__link {
-        color: #c41ba5;
+        color: $fuxia;
+    }
+}
+
+.notifications {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+        margin: 3px 0 3px 0;
+        font-size: 16px;
+        border: 1px solid $white;
+        border-radius: 6px;
+        background: $white;
+        color: $black;
+        padding: 12px 8px;
+        width: 240px;
+        line-height: 1.1;
+        animation: disappear 3.3s;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+
+    35% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
     }
 }
