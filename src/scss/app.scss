@@ -3,6 +3,8 @@ body {
     background-color: #151716;
     color: whitesmoke;
     font-size: 16px;
+    line-height: 1.1;
+    padding-left: calc(100vw - 100%);
 }
 
 .container {
@@ -10,7 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     font-size: 32px;
 }
 
@@ -19,11 +21,9 @@ body {
     user-select: none
 }
 
-a {
-    &:first-child {
-        color: #c41ba5;
-        cursor: help;
-    }
+.motto>a {
+    color: #c41ba5;
+    cursor: help;
 }
 
 .search {
@@ -53,17 +53,29 @@ a {
 
 .result {
     margin: 36px 0 0 0;
-    width: 800px;
+    width: 640px;
+
+    &__unsuccess,
+    &__loading {
+        text-align: center;
+    }
 
     &__item {
-        border: 2px solid whitesmoke;
-        border-radius: 4px;
-        padding: 20px 10px;
+        border: 1px solid whitesmoke;
+        border-radius: 6px;
+        padding: 20px 16px;
         display: flex;
         flex-direction: column;
         gap: 8px;
-        align-items: start;
-        margin: 0 0 24px 0;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin: 0 0 16px 0;
         font-size: 16px;
+    }
+}
+
+.item {
+    &__link {
+        color: #c41ba5;
     }
 }
