@@ -48,7 +48,7 @@ function validateAndSubmit(e, searchText) {
  */
 async function fetchRepos(text) {
     showLoadingMessage()
-    await fetch(`https://api.github.com/search/repositories?q=${text}in%3Aname&type=Repositories&page=1&per_page=10`)
+    await fetch(`https://api.github.com/search/repositories?q=${text}+in:name&page=1&per_page=10`)
     .then(res => res.json()).then(json => {
         hideLoadingMessage()
         if (json.total_count == 0) {
