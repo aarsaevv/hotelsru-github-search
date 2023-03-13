@@ -42,13 +42,13 @@ function validateAndSubmit(e, searchText) {
     }
 }
 
-/** Функция получения ответа от API. Я использовал обычный квери без установки дополнительных зависимостей.
+/** Функция получения ответа от API. Я использовал обычный квери во избежание установки дополнительных зависимостей.
  * Показывается сообщение о загрузке, затем получается ответ, и если нет удовлетворяющих запросу репозиториев,
  * выводится сообщение, что ничего не найдено. Если репозитории есть, они отрисовываются в списке.
  */
 async function fetchRepos(text) {
     showLoadingMessage()
-    await fetch(`https://api.github.com/search/repositories?q=${text}&page=1&per_page=10`)
+    await fetch(`https://api.github.com/search/repositories?q=${text}in%3Aname&type=Repositories&page=1&per_page=10`)
     .then(res => res.json()).then(json => {
         hideLoadingMessage()
         if (json.total_count == 0) {
